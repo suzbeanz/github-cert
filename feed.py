@@ -9,7 +9,6 @@ with open('feed.yaml', 'r') as file:
         'xmlns:content':'http://purl.org/rss/1.0/modules/content/'})
 
 channel_element = xml_tree.SubElement(rss_element, 'channel')
-channel_element =xml_tree.SubElement(rss_element, 'channel')
 
 link_prefix = yaml_data['link']
 
@@ -23,7 +22,7 @@ xml_tree.SubElement(channel_element, 'link').text = link_prefix
 
 xml_tree.SubElement(channel_element, 'itunes:category', {'text': yaml_data['category']})
 
-for item in yaml_data['items']:
+for item in yaml_data['item']:
     item_element = xml_tree.SubElement(channel_element, 'item')
     xml_tree.SubElement(item_element, 'title').text = item['title']
     xml_tree.SubElement(item_element, 'itunes:author').text = yaml_data['author']
@@ -37,6 +36,5 @@ for item in yaml_data['items']:
         'length': item['length']
     })
 
-
 output_tree = xml_tree.ElementTree(rss_element)
-output_tree.write('podcast.xml', encoding='UTF-8',xml_declaration=True)
+output_tree.write('podcast.xml', encoding='UTF-8', xml_declaration=True)
