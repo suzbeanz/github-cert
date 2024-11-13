@@ -9,6 +9,7 @@ with open('feed.yaml', 'r') as file:
         'xmlns:content':'http://purl.org/rss/1.0/modules/content/'})
 
 channel_element = xml_tree.SubElement(rss_element, 'channel')
+channel_element =xml_tree.SubElement(rss_element, 'channel')
 
 link_prefix = yaml_data['link']
 
